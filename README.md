@@ -4,6 +4,23 @@
 
 [![KLP](https://img.shields.io/badge/kiss-literate-orange.svg)](https://github.com/fibo/kiss-literate-programming) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
+## Usage
+
+As you might expect, you can do
+
+```
+var isPrime = require('prime-number')
+
+console.log(isPrime(19)) // true
+```
+
+There is also a list of few primes available, if you want to use it
+
+```
+var primeNumberList = require('prime-number/list')
+console.log(primeNumberList)
+```
+
 ## Installation
 
 With [npm](https://npmjs.org/) do
