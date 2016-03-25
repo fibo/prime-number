@@ -43,6 +43,7 @@ The algorithm is really basic.
 3. If it is not even, loop over odd numbers that are less than its square root. Start from 3.
 4. If such odd is a prime (here the function is called recursively) check if it is a divisor of the given number.
 
+
     /**
      * Check if a number is prime
      *
@@ -64,6 +65,7 @@ The algorithm is really basic.
 
       return true
     }
+
 
 Export `primeNumber` function
 
