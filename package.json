@@ -10,10 +10,16 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "check-deps": "npm outdated",
     "lint": "standard",
     "postversion": "git push origin v${npm_package_version}; npm publish; git push origin master",
     "test": "tape test.js"
   },
+  "pre-commit": [
+    "lint",
+    "test",
+    "check-deps"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/fibo/prime-number.git"
@@ -29,6 +35,7 @@
     "url": "https://github.com/fibo/prime-number/issues"
   },
   "devDependencies": {
+    "pre-commit": "^1.1.2",
     "standard": "^6.0.8",
     "tape": "^4.3.0"
   },
