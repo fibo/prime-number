@@ -1,0 +1,36 @@
+{
+  "name": "prime-number",
+  "description": "is a fast recursive function to check if a number is prime",
+  "version": "0.0.0",
+  "homepage": "https://github.com/fibo/prime-number",
+  "author": {
+    "name": "Gianluca Casati",
+    "url": "http://g14n.info"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "postversion": "git push origin v${npm_package_version}; npm publish; git push origin master",
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fibo/prime-number.git"
+  },
+  "keywords": [
+    "math",
+    "number",
+    "primality",
+    "prime",
+    "primes"
+  ],
+  "bugs": {
+    "url": "https://github.com/fibo/prime-number/issues"
+  },
+  "devDependencies": {
+    "standard": "^6.0.8",
+    "tape": "^4.3.0"
+  },
+  "dependencies": {}
+}
