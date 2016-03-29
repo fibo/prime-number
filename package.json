@@ -1,7 +1,7 @@
 {
   "name": "prime-number",
   "description": "is a slow recursive function to check if a number is prime",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/fibo/prime-number",
   "author": {
     "name": "Gianluca Casati",
