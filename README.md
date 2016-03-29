@@ -41,7 +41,7 @@ benchmark(isPrime)(from, to)
 
 Here there are the results, using a oneliner, of few primality check packages found on npm, so I can state that
 
-> My algorythm sucks! 🐸
+> My algorithm sucks! 🐸
 
 ```bash
 # node -e "require('prime-number/benchmark')(require('is-prime'))(100000, 10000000)"
