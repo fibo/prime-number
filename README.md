@@ -4,6 +4,13 @@
 
 [![KLP](https://img.shields.io/badge/kiss-literate-orange.svg)](https://github.com/fibo/kiss-literate-programming) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
+**Table of Contents**
+
+* [Usage](#usage): isPrime, list, benchmark.
+* [Installation](#installation): with npm or copy and paste.
+* [Source](#source): embedded in this file.
+* [License](#license): MIT.
+
 ## Usage
 
 As you might expect, you can do
@@ -14,12 +21,27 @@ var isPrime = require('prime-number')
 console.log(isPrime(19)) // true
 ```
 
-There is also a list of few primes available, if you want to use it
+There is a list of few primes available, if you want to use it
 
 ```
 var primeNumberList = require('prime-number/list')
 console.log(primeNumberList)
 ```
+
+You can benchmark other primality check algorithms.
+
+```
+var isPrime = require('yet-another-primality-check')
+var benchmark = require('prime-number/benchmark')
+var from = 1000
+var to = Number.MAX_SAFE_INTEGER
+
+benchmark(isPrime)(from, to)
+```
+
+Here it is the results, using a oneliner, of few primality check packages
+found on npm.
+
 
 ## Installation
 
