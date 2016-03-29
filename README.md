@@ -39,9 +39,23 @@ var to = Number.MAX_SAFE_INTEGER
 benchmark(isPrime)(from, to)
 ```
 
-Here it is the results, using a oneliner, of few primality check packages
-found on npm.
+Here there are the results, using a oneliner, of few primality check packages found on npm, so I can state that
 
+> My algorythm sucks! 🐸
+
+```bash
+# node -e "require('prime-number/benchmark')(require('is-prime'))(100000, 10000000)"
+Found 654987 primes
+primality benchmark: 2507ms
+
+# node -e "require('prime-number/benchmark')(require('check-prime'))(100000, 10000000)"
+Found 654987 primes
+primality benchmark: 12483ms
+
+# node -e "require('prime-number/benchmark')(require('prime-number'))(100000, 10000000)"
+Found 654987 primes
+primality benchmark: 121759ms
+```
 
 ## Installation
 
