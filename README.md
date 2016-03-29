@@ -79,7 +79,7 @@ The algorithm is really basic:
 
       if (n % 2 === 0) return false
 
-      for (var i = 3; i < Math.sqrt(n); i = i + 2) {
+      for (var i = 3; i <= Math.sqrt(n); i = i + 2) {
         if (!primeNumber(i)) continue // <-- recursion here
 
         if (n % i === 0) return false
