@@ -1,8 +1,8 @@
 {
   "name": "prime-number",
-  "description": "is a slow recursive function to check if a number is prime",
+  "description": "is a slow recursive function to check if a number is prime (and a benchmark to test how slow it is :)",
   "version": "0.2.2",
-  "homepage": "https://github.com/fibo/prime-number",
+  "homepage": "http://g14n.info/prime-number",
   "author": {
     "name": "Gianluca Casati",
     "url": "http://g14n.info"
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "pre-commit": "^1.1.2",
-    "standard": "^6.0.8",
+    "standard": "^9.0.2",
     "tape": "^4.3.0"
   },
   "dependencies": {}
