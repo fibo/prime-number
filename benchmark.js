@@ -9,15 +9,15 @@ function benchmark (isPrime) {
   /**
    * Primality check on given range
    *
-   * @param {Number} from
-   * @param {Number} to
+   * @param {Number|BigInt} from
+   * @param {Number|BigInt} to
    */
   return function checkPrimality (from, to) {
     console.time('primality benchmark')
 
-    var countPrimes = 0
+    let countPrimes = 0
 
-    for (var i = from; i <= to; i++) if (isPrime(i)) countPrimes++
+    for (let i = from; i <= to; i++) if (isPrime(i)) countPrimes++
 
     console.log(`Found ${countPrimes} primes`)
 

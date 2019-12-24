@@ -8,17 +8,16 @@
     "url": "http://g14n.info"
   },
   "license": "MIT",
-  "main": "index.js",
+  "main": "prime-number.js",
   "scripts": {
-    "check-deps": "npm outdated",
-    "lint": "standard",
+    "lint": "standa",
+    "markdown2code": "markdown2code -l javascript README.md > prime-number.js",
     "postversion": "git push origin v${npm_package_version}; npm publish; git push origin master",
     "test": "tape test.js"
   },
   "pre-commit": [
     "lint",
-    "test",
-    "check-deps"
+    "test"
   ],
   "repository": {
     "type": "git",
@@ -34,10 +33,6 @@
   "bugs": {
     "url": "https://github.com/fibo/prime-number/issues"
   },
-  "devDependencies": {
-    "pre-commit": "^1.1.2",
-    "standard": "^9.0.2",
-    "tape": "^4.3.0"
-  },
+  "devDependencies": {},
   "dependencies": {}
 }

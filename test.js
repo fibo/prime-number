@@ -1,7 +1,7 @@
-var primeNumber = require('./index')
-var test = require('tape')
+const primeNumber = require('./prime-number.js')
+const test = require('tape')
 
-var primes = require('./list')
+const primes = require('./list.js')
 
 test('primeNumber', function (t) {
   t.ok(primeNumber(1))

@@ -2,7 +2,8 @@
 
 > is a slow recursive function to check if a number is prime (and a benchmark to test how slow it is :)
 
-[![KLP](https://img.shields.io/badge/kiss-literate-orange.svg)](https://github.com/fibo/kiss-literate-programming) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![KLP](https://img.shields.io/badge/kiss-literate-orange.svg)](https://github.com/fibo/kiss-literate-programming)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 **Table of Contents**
 
@@ -15,26 +16,26 @@
 
 As you might expect, you can do
 
-```
-var isPrime = require('prime-number')
+```js
+const isPrime = require('prime-number')
 
 console.log(isPrime(19)) // true
 ```
 
 There is a list of few primes available, if you want to use it
 
-```
-var primeNumberList = require('prime-number/list')
+```js
+const primeNumberList = require('prime-number/list')
 console.log(primeNumberList)
 ```
 
 You can benchmark other primality check algorithms.
 
-```
-var isPrime = require('yet-another-primality-check')
-var benchmark = require('prime-number/benchmark')
-var from = 1000
-var to = Number.MAX_SAFE_INTEGER
+```js
+const isPrime = require('yet-another-primality-check')
+const benchmark = require('prime-number/benchmark')
+const from = 1000
+const to = Number.MAX_SAFE_INTEGER
 
 benchmark(isPrime)(from, to)
 ```
@@ -46,15 +47,15 @@ Here there are the results, using a oneliner, of few primality check packages fo
 ```bash
 # node -e "require('prime-number/benchmark')(require('is-prime'))(100000, 10000000)"
 Found 654987 primes
-primality benchmark: 2507ms
+primality benchmark: 2.333s
 
 # node -e "require('prime-number/benchmark')(require('check-prime'))(100000, 10000000)"
 Found 654987 primes
-primality benchmark: 12483ms
+primality benchmark: 10.247s
 
 # node -e "require('prime-number/benchmark')(require('prime-number'))(100000, 10000000)"
 Found 654987 primes
-primality benchmark: 121759ms
+primality benchmark: 22.102s
 ```
 
 ## Installation
@@ -62,7 +63,7 @@ primality benchmark: 121759ms
 With [npm](https://npmjs.org/) do
 
 ```bash
-$ npm install prime-number
+npm install prime-number
 ```
 
 Or copy and paste the code below.
@@ -74,38 +75,51 @@ You can do it with some other function before calling `primeNumber`.
 
 The algorithm is really basic:
 
-* **I** [Is it 1 a prime](https://en.wikipedia.org/wiki/Prime_number#Primality_of_one)?  Some years ago I composed a djembe rhythm based on prime numbers, and it sounds better if 1 is considered prime.  Casually, also the algorithm implemented here computes 1 as a prime.
+* **I** First of all: [is it 1 a prime](https://en.wikipedia.org/wiki/Prime_number#Primality_of_one)?  Some years ago I composed a djembe rhythm based on prime numbers, and it sounds better if 1 is considered prime.  Casually, also the algorithm implemented here computes 1 as a prime.
 * **II** Number 2 is a special case. Check if given number is even, excluding 2 itself.
 * **III** If it is not even, loop over odd numbers that are less than its square root. Start from 3.
 * **IV** If such odd is a prime (here the function is called *recursively*) check if it is a divisor of the given number.
+* **V** use a memoize technique, avoid computing twice.
 
+```javascript
+// Remember if a number is prime.
+const memoize = {}
 
-    /**
-     * Check if a number is prime
-     *
-     * @param {Number} n
-     *
-     * @returns {Boolean} isPrime
-     */
+/**
+ * Check if a number is prime.
+ *
+ * @param {Number}
+ *
+ * @returns {Boolean}
+ */
 
-    function primeNumber (n) {
-      if (n === 2) return true // 2 is a special case
+function primeNumber (num) {
+  // Avoid computing twice.
+  if (typeof memoize[num] === 'boolean') return memoize[num]
 
-      if (n % 2 === 0) return false
+  if (num === 2) return true // 2 is a special case
 
-      for (var i = 3; i <= Math.sqrt(n); i = i + 2) {
-        if (!primeNumber(i)) continue // <-- recursion here
+  if (num % 2 === 0) return false // a prime number other than 2, is odd
 
-        if (n % i === 0) return false
-      }
+  for (let i = 3; i <= Math.sqrt(num); i = i + 2) {
+    if (!primeNumber(i)) continue // <-- recursion here
 
-      return true
+    if (num % i === 0) {
+      memoize[num] = false
+      return false
     }
+  }
 
+  memoize[num] = true
+  return true
+}
+```
 
 Export `primeNumber` function
 
-    module.exports = primeNumber
+```javascript
+module.exports = primeNumber
+```
 
 ## License
 
