@@ -1,5 +1,7 @@
 // Remember if a number is prime.
-const memoize = {}
+const memoize = { isPrime: {}, isNotPrime: {} }
+memoize.isNotPrime[1] = true
+memoize.isPrime[2] = true
 
 /**
  * Check if a number is prime.
@@ -11,28 +13,39 @@ const memoize = {}
 
 function primeNumber (num) {
   // Avoid computing twice.
-  if (typeof memoize[num] === 'boolean') return memoize[num]
+  if (memoize.isPrime[num]) return true
+  if (memoize.isNotPrime[num]) return false
 
-  if (num === 2) return true
-  if (num === 3) return true
-  if (num === 5) return true
-  if (num === 7) return true
+  const knowPrimes = Object.keys(memoize.isPrime)
 
-  if (num % 2 === 0) return false
-  if (num % 3 === 0) return false
-  if (num % 5 === 0) return false
-  if (num % 7 === 0) return false
+  for (let i = 0; i < knowPrimes.length; i++) {
+    const p = Number(knowPrimes[i])
 
-  for (let i = 7; i * i <= num; i = i + 2 * 3 * 5 * 7) {
-    if (!primeNumber(i)) continue // <-- recursion here
+    if (num === p) return true
 
-    if (num % i === 0) {
-      memoize[num] = false
+    if (num % p === 0) {
+      memoize.isNotPrime[num] = true
       return false
     }
   }
 
-  memoize[num] = true
+  for (
+    let i = 3;
+    // Do not excede the square root of num.
+    i * i <= num;
+    // All prime numbers are 1 or 5 modulo 6.
+    // Since we start with 3, this will do: 3 -> 5 -> 7 -> 11 ... +2 -> +4 -> +2 -> +4 ...
+    i = i % 6 === 1 ? i + 4 : i + 2
+  ) {
+    if (primeNumber(i)) { // <-- Recursion here!
+      if (num % i === 0) {
+        memoize.isNotPrime[num] = true
+        return false
+      }
+    }
+  }
+
+  memoize.isPrime[num] = true
   return true
 }
 module.exports = primeNumber
