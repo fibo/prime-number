@@ -1,6 +1,6 @@
 # prime-number
 
-> is a slow recursive function to check if a number is prime (and a benchmark to test how slow it is :)
+> is a recursive function to check if a number is prime (and a benchmark to test slow it is :)
 
 [![KLP](https://img.shields.io/badge/kiss-literate-orange.svg)](https://github.com/fibo/kiss-literate-programming)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
@@ -11,6 +11,8 @@
 * [Installation](#installation): with npm or copy and paste.
 * [Source](#source): embedded in this file.
 * [License](#license): MIT.
+
+[Is it 1 a prime](https://en.wikipedia.org/wiki/Prime_number#Primality_of_one)?  Some years ago I composed a djembe rhythm based on prime numbers, and it sounds better if 1 is considered prime. Casually, also the algorithm implemented here computes 1 as a prime.
 
 ## Usage
 
@@ -42,9 +44,13 @@ benchmark(isPrime)(from, to)
 
 Here there are the results, using a oneliner, of few primality check packages found on npm, so I can state that
 
-> My algorithm sucks! 🐸
+> My algorithm run fast! 🐸
 
 ```bash
+# node -e "require('prime-number/benchmark')(require('prime-number'))(100000, 10000000)"
+Found 654987 primes
+primality benchmark: 969.386ms
+
 # node -e "require('prime-number/benchmark')(require('is-prime'))(100000, 10000000)"
 Found 654987 primes
 primality benchmark: 2.333s
@@ -52,10 +58,6 @@ primality benchmark: 2.333s
 # node -e "require('prime-number/benchmark')(require('check-prime'))(100000, 10000000)"
 Found 654987 primes
 primality benchmark: 10.247s
-
-# node -e "require('prime-number/benchmark')(require('prime-number'))(100000, 10000000)"
-Found 654987 primes
-primality benchmark: 22.102s
 ```
 
 ## Installation
@@ -70,16 +72,8 @@ Or copy and paste the code below.
 
 ## Source
 
-First of all, do not check if **n** is an integer or positive or less than `Number.MAX_SAFE_INTEGER`.
+First of all, do not check if **num** is an integer or positive or less than `Number.MAX_SAFE_INTEGER`.
 You can do it with some other function before calling `primeNumber`.
-
-The algorithm is really basic:
-
-* **I** First of all: [is it 1 a prime](https://en.wikipedia.org/wiki/Prime_number#Primality_of_one)?  Some years ago I composed a djembe rhythm based on prime numbers, and it sounds better if 1 is considered prime.  Casually, also the algorithm implemented here computes 1 as a prime.
-* **II** Number 2 is a special case. Check if given number is even, excluding 2 itself.
-* **III** If it is not even, loop over odd numbers that are less than its square root. Start from 3.
-* **IV** If such odd is a prime (here the function is called *recursively*) check if it is a divisor of the given number.
-* **V** use a memoize technique, avoid computing twice.
 
 ```javascript
 // Remember if a number is prime.
@@ -97,11 +91,17 @@ function primeNumber (num) {
   // Avoid computing twice.
   if (typeof memoize[num] === 'boolean') return memoize[num]
 
-  if (num === 2) return true // 2 is a special case
+  if (num === 2) return true
+  if (num === 3) return true
+  if (num === 5) return true
+  if (num === 7) return true
 
-  if (num % 2 === 0) return false // a prime number other than 2, is odd
+  if (num % 2 === 0) return false
+  if (num % 3 === 0) return false
+  if (num % 5 === 0) return false
+  if (num % 7 === 0) return false
 
-  for (let i = 3; i <= Math.sqrt(num); i = i + 2) {
+  for (let i = 7; i * i <= num; i = i + 2 * 3 * 5 * 7) {
     if (!primeNumber(i)) continue // <-- recursion here
 
     if (num % i === 0) {

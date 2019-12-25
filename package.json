@@ -1,6 +1,6 @@
 {
   "name": "prime-number",
-  "description": "is a slow recursive function to check if a number is prime (and a benchmark to test how slow it is :)",
+  "description": "is a recursive function to check if a number is prime (and a benchmark to test how slow it is :)",
   "version": "1.0.0",
   "homepage": "http://g14n.info/prime-number",
   "author": {

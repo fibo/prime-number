@@ -13,11 +13,17 @@ function primeNumber (num) {
   // Avoid computing twice.
   if (typeof memoize[num] === 'boolean') return memoize[num]
 
-  if (num === 2) return true // 2 is a special case
+  if (num === 2) return true
+  if (num === 3) return true
+  if (num === 5) return true
+  if (num === 7) return true
 
-  if (num % 2 === 0) return false // a prime number other than 2, is odd
+  if (num % 2 === 0) return false
+  if (num % 3 === 0) return false
+  if (num % 5 === 0) return false
+  if (num % 7 === 0) return false
 
-  for (let i = 3; i <= Math.sqrt(num); i = i + 2) {
+  for (let i = 7; i * i <= num; i = i + 2 * 3 * 5 * 7) {
     if (!primeNumber(i)) continue // <-- recursion here
 
     if (num % i === 0) {
