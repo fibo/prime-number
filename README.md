@@ -43,23 +43,25 @@ const to = Number.MAX_SAFE_INTEGER
 benchmark(isPrime)(from, to)
 ```
 
-Here there are the results, using a oneliner, of few primality check packages found on npm, so I can state that
-
-> My algorithm run fast! 🐸
+Using a oneliner, let's check few primality check packages found on npm.
 
 ```bash
-# node -e "require('prime-number/benchmark')(require('prime-number'))(100000, 10000000)"
-Found 654987 primes
-primality benchmark: 969.386ms
+# node -e "require('prime-number/benchmark')(require('prime-number'))(10000, 100000)"
+Found 8363 primes
+Primality benchmark: 44.703s
 
-# node -e "require('prime-number/benchmark')(require('is-prime'))(100000, 10000000)"
-Found 654987 primes
-primality benchmark: 2.333s
+# node -e "require('prime-number/benchmark')(require('is-prime'))(10000, 100000)"
+Found 8363 primes
+Primality benchmark: 14.885ms
 
-# node -e "require('prime-number/benchmark')(require('check-prime'))(100000, 10000000)"
+# node -e "require('prime-number/benchmark')(require('check-prime'))(10000, 100000)"
 Found 654987 primes
-primality benchmark: 10.247s
+primality benchmark: 61.613ms
 ```
+
+So I can state that
+
+> My algorithm sucks! 🐸
 
 ## Installation
 

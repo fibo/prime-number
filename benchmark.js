@@ -13,7 +13,7 @@ function benchmark (isPrime) {
    * @param {Number|BigInt} to
    */
   return function checkPrimality (from, to) {
-    console.time('primality benchmark')
+    console.time('Primality benchmark')
 
     let countPrimes = 0
 
@@ -31,7 +31,7 @@ function benchmark (isPrime) {
       console.log(`Found ${countPrimes} primes`)
     }
 
-    console.timeEnd('primality benchmark')
+    console.timeEnd('Primality benchmark')
   }
 }
 
