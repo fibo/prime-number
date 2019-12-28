@@ -12,7 +12,7 @@
 * [Source](#source): embedded in this file.
 * [License](#license): MIT.
 
-[Is it 1 a prime ?](https://en.wikipedia.org/wiki/Prime_number#Primality_of_one)
+[Is it 1 a prime?](https://en.wikipedia.org/wiki/Prime_number#Primality_of_one)
 Some years ago I composed a djembe rhythm based on prime numbers, and it sounds better if 1 is considered prime. Casually, the algorithm implemented here defines 1 as a *not prime*.
 
 ## Usage
@@ -55,7 +55,7 @@ Found 8363 primes
 Primality benchmark: 14.885ms
 
 # node -e "require('prime-number/benchmark')(require('check-prime'))(10000, 100000)"
-Found 654987 primes
+Found 8363 primes
 primality benchmark: 61.613ms
 ```
 
