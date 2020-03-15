@@ -1,6 +1,6 @@
 # prime-number
 
-> is a recursive function to check if a number is prime (and a benchmark to test slow it is :)
+> is a recursive function to check if a number is prime (and a benchmark to test how slow it is :)
 
 [![KLP](https://img.shields.io/badge/kiss-literate-orange.svg)](https://github.com/fibo/kiss-literate-programming)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
