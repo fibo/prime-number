@@ -1,17 +1,118 @@
-const primeNumber = require('./prime-number.js')
-const test = require('tape')
+import { strict as assert } from 'node:assert'
+import { test } from 'node:test'
 
-const primes = require('./list.js')
+import isPrime from 'prime-number'
 
-test('primeNumber', function (t) {
-  t.ok(!primeNumber(1))
-  t.ok(primeNumber(2))
-  t.ok(primeNumber(3))
+import primesList from './benchmarks/primesList.js'
 
-  primes.forEach(function (p) {
-    t.ok(primeNumber(p), p)
-    t.notOk(primeNumber(p + 3), p + 3)
-  })
+test('isPrime',() => {
+  for (const { input, output } of [
+    { input: 1, output: false },
+    { input: 2, output: true },
+    { input: 3, output: true },
+    { input: 4, output: false },
+    { input: 5, output: true },
+    { input: 6, output: false },
+    { input: 7, output: true },
+    { input: 8, output: false },
+    { input: 9, output: false },
+    { input: 10, output: false },
+    { input: 11, output: true },
+    { input: 12, output: false },
+    { input: 13, output: true },
+    { input: 14, output: false },
+    { input: 15, output: false },
+    { input: 16, output: false },
+    { input: 17, output: true },
+    { input: 18, output: false },
+    { input: 19, output: true },
+    { input: 20, output: false },
+    { input: 21, output: false },
+    { input: 22, output: false },
+    { input: 23, output: true },
+    { input: 24, output: false },
+    { input: 25, output: false },
+    { input: 26, output: false },
+    { input: 27, output: false },
+    { input: 28, output: false },
+    { input: 29, output: true },
+    { input: 30, output: false },
+    { input: 31, output: true },
+    { input: 32, output: false },
+    { input: 33, output: false },
+    { input: 34, output: false },
+    { input: 35, output: false },
+    { input: 36, output: false },
+    { input: 37, output: true },
+    { input: 38, output: false },
+    { input: 39, output: false },
+    { input: 40, output: false },
+    { input: 41, output: true },
+    { input: 42, output: false },
+    { input: 43, output: true },
+    { input: 44, output: false },
+    { input: 45, output: false },
+    { input: 46, output: false },
+    { input: 47, output: true },
+    { input: 48, output: false },
+    { input: 49, output: false },
+    { input: 50, output: false },
+    { input: 51, output: false },
+    { input: 52, output: false },
+    { input: 53, output: true },
+    { input: 54, output: false },
+    { input: 55, output: false },
+    { input: 56, output: false },
+    { input: 57, output: false },
+    { input: 58, output: false },
+    { input: 59, output: true },
+    { input: 60, output: false },
+    { input: 61, output: true },
+    { input: 62, output: false },
+    { input: 63, output: false },
+    { input: 64, output: false },
+    { input: 65, output: false },
+    { input: 66, output: false },
+    { input: 67, output: true },
+    { input: 68, output: false },
+    { input: 69, output: false },
+    { input: 70, output: false },
+    { input: 71, output: true },
+    { input: 72, output: false },
+    { input: 73, output: true },
+    { input: 74, output: false },
+    { input: 75, output: false },
+    { input: 76, output: false },
+    { input: 77, output: false },
+    { input: 78, output: false },
+    { input: 79, output: true },
+    { input: 80, output: false },
+    { input: 81, output: false },
+    { input: 82, output: false },
+    { input: 83, output: true },
+    { input: 84, output: false },
+    { input: 85, output: false },
+    { input: 86, output: false },
+    { input: 87, output: false },
+    { input: 88, output: false },
+    { input: 89, output: true },
+    { input: 90, output: false },
+    { input: 91, output: false },
+    { input: 92, output: false },
+    { input: 93, output: false },
+    { input: 94, output: false },
+    { input: 95, output: false },
+    { input: 96, output: false },
+    { input: 97, output: true },
+    { input: 98, output: false },
+    { input: 99, output: false },
+    { input: 100, output: false },
+    { input: 101, output: true },
+  ]) {
+    assert.equal(isPrime(input), output)
+  }
 
-  t.end()
+  for (const prime of primesList) {
+    assert.ok(isPrime(prime))
+  }
 })

@@ -6,7 +6,7 @@ notPrimes.add(1)
 primes.add(2)
 primes.add(3)
 
-export default function primeNumber (num) {
+function primeNumber (num) {
   // Avoid computing twice.
   if (primes.has(num)) return true
   if (notPrimes.has(num)) return false
@@ -36,3 +36,5 @@ export default function primeNumber (num) {
   primes.add(num)
   return true
 }
+
+module.exports = primeNumber

@@ -1,24 +1,24 @@
 {
   "name": "prime-number",
-  "description": "is a recursive function to check if a number is prime (and a benchmark to test how slow it is :)",
-  "version": "1.0.2",
-  "homepage": "http://g14n.info/prime-number",
+  "description": "check if a number is prime",
+  "type": "module",
+  "version": "2.0.0",
+  "license": "MIT",
   "author": {
     "name": "Gianluca Casati",
-    "url": "http://g14n.info"
+    "url": "https://fibo.github.io"
   },
-  "license": "MIT",
-  "main": "prime-number.js",
   "scripts": {
-    "lint": "standa",
-    "markdown2code": "markdown2code -l javascript README.md > prime-number.js",
-    "postversion": "git push origin v${npm_package_version}; npm publish; git push origin master",
-    "test": "tape test.js"
+    "benchmark:check-prime": "node benchmarks/check-prime.cjs",
+    "benchmark:is-prime": "node benchmarks/is-prime.cjs",
+    "benchmark:prime-number": "node benchmarks/prime-number.cjs",
+    "test": "node --test"
   },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
+  "exports": {
+    "import": "./prime-number.js",
+    "require": "./prime-number.cjs",
+    "types": "./index.d.ts"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/fibo/prime-number.git"
