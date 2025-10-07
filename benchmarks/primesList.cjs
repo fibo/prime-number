@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   // Few numbers from
   // https://primes.utm.edu/lists/small/10000.txt
 
